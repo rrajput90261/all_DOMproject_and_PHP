@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: rgb(240, 240, 240);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            caret-color: transparent;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .top{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+        .bottom{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+        .btn{
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+        .flash{
+            background-color: white;
+        }
+        .error{
+            background-color: red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Simon Says</h2>
+    <p>Click on the button to make simo say something</p>
+    <div class="container">
+        <div class="top">
+            <div class="red btn" id="red"></div>
+            <div class="green btn" id="green"></div>
+        </div>
+        <div class="bottom">
+            <div class="blue btn" id="blue"></div>
+            <div class="yellow btn" id="yellow"></div>
+        </div>
+    </div>
+    <h3>High Score :<span id="score">0</span></h3>
+    <script src="script.js"></script>
+</body>
+</html>

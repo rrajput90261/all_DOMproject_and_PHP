@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dali Task Manager</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h2{
+            color: skyblue;
+        }
+
+        form {
+            margin-bottom: 20px;
+            flex-direction: column;
+            margin: 10px;
+            padding: 10px;
+            gap: 12px;
+            
+        }
+
+
+         
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            
+        }
+       
+        
+    </style>
+</head>
+<body>
+    
+    <h2>To Do Application</h2>
+    <form action="submit">
+        <input type="text" placeholder="Enter your task here" id="name">
+        <input type ="datetime-local" id="date">
+        <button type="submit">add task</button>
+    </form>
+    <ul id="taskList"></ul>
+    <!-- <button>mark Task</button>
+    <button>completed Task</button>
+    <button>remove Task</button> -->
+
+
+    <script>
+        let task = []
+        let btn = document.querySelectorAll('button');
+        let taskList = document.getElementById('taskList');
+
+        function addtask(){
+            let name = document.getElementById('name').value;
+            let date = document.getElementById('date').value;
+            let taskobject = {
+                name: name,
+                date: date,
+                id: Date.now()
+            };
+            if(!name || !date)return
+            task.push(taskobject);
+        }
+        function display(){
+            tasklist.innerHTML = ''
+            task.forEach(e =>{
+                let st = document.createElement('li')
+                st.classList.add('el')
+                st.innerHTML = `${e.name} ${e.date} <button>Delete</button> <button>check</button>`
+                taskList.appendChild(st)
+            })
+        }
+        btn.addEventListener("click",(e)=>{
+            e.preventDefault()
+            addtask()
+            saveTask()
+        })
+
+        
+        function saveTask(){
+            localStorage.setItem('task', JSON.stringify(task));
+        }
+    </script>
+</body>
+</html>

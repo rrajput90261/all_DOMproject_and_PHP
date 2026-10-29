@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .check{
+            text-decoration: line-through;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <h1>TO DO LIST</h1>
+        <input type="text" placeholder="new text" id="name">
+        <input type="datetime-local"  id="date">
+        <button id="submit">Add task</button>
+    </form>
+    <ul id="list"></ul>
+    <script>
+            let task = JSON.parse(localStorage.getItem('task')) || []
+            let btn = document.getElementById("submit")
+            let tasklist = document.getElementById("list")
+            function addtask(){
+                let name = document.getElementById("name").value
+                let date = document.getElementById("date").value
+                let obj = {
+                    id:Date.now(),
+                    name,
+                    date
+                }
+                if(!name||!date)return
+                task.push(obj)
+            }
+            function display(){
+                tasklist.innerHTML=""
+                task.forEach(element =>{
+                    let st = document.createElement("li")
+                    st.classList.add("el")
+                    st.id = element.id
+                    st.innerHTML = `${element.name} ${element.date} <button onClick = "deletetask(${element.id})">Delete</button> <button onclick="check(${element.id})">Check</button>`
+                    tasklist.appendChild(st)
+                })
+            }
+            btn.addEventListener("click",(e)=>{
+                e.preventDefault();
+                addtask()
+                display()
+                save()
+                check()
+            })
+
+            function save(){
+                localStorage.setItem("task",JSON.stringify(task))
+            }
+
+            function check(id){ 
+                let el = document.querySelectorAll(".el")
+                el.forEach(i=>{
+                    if(i.id == id){
+                        i.classList.toggle("check")
+                    }
+                })
+            }
+            function deletetask(id){
+                // console.log("Helo")
+                task = task.filter(element => {
+                    return element.id != id
+                })
+                save()
+                display()
+            }
+            function reset(){
+
+                task = []
+                display()
+                save()
+            }
+            display()
+
+
+    </script>
+</body>
+</html>

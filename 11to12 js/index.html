@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .check{
+            text-decoration: line-through black;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <form action="sumbit">
+        <input type="text"placeholder="add new task" id="name">
+        <input type="datetime-local" id="date">
+        <button id="submit">add</button>
+    </form>
+    <ul id="list">
+
+    </ul>
+    <button type="button" onclick="reset()">reset task</button>
+    <script src="script.js"></script>
+</body>
+</html>

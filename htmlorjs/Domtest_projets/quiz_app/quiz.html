@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz project</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Quiz app</h1>
+    <div id="container">press satrt button </div>
+    <button id="btn">start</button>
+    <script>
+        let questions = [
+            {
+                question: "Which language is mainly used to structure a web page?",
+                A: "CSS",
+                B: "HTML",
+                C: "JavaScript",
+                D: "Python",
+                answer:"B:HTML"
+            },
+            {
+                question:"Which keyword is used to declare a variable in JavaScript?",
+                A: "var",
+                B: "int",
+                C: "string",
+                D: "define",
+
+            },
+            {
+                question:"Which keyword is used to declare a variable in JavaScript?",
+                A: "var",
+                B: "int",
+                C: "string",
+                D: "define",
+                answer:"A:var"
+            },
+            {
+                question:"Which database is commonly used with MongoDB?",
+                A: "PostgreSQL",
+                B: "MySQL",
+                C: "Redis",
+                D: "MongoDB",
+                answer:"D:MongoDB"
+            },
+            {
+                question:"What does CSS stand for?",
+                A: "Cascading Style Sheets",
+                B: "Computer Style Sheets",
+                C: "Colorful Style Sheets",
+                D: "Creative Style Sheets",
+                answer:"A:Cascading Style Sheets"
+            },
+            {
+                question:"Which method converts JSON data into a JavaScript object?",
+                A: "JSON.parse()",
+                B: "JSON.stringify()",
+                C: "JSON.convert()",
+                D: "JSON.toObject()",
+                answer:"A:JSON.parse()",
+            },
+
+            {
+                question:"Which method is used to add an element at the end of an array in JavaScript?",
+                A: "push()",
+                B: "pop()",
+                C: "shift()",
+                D: "unshift()",
+                answer:"A:push()"
+            },
+            {
+                question:"Which operator is used for strict equality comparison in JavaScript?",
+                A: "==",
+                B: "===",
+                C: "=",
+                D: "!=",
+                answer:"B:==="
+            },
+            {
+                question:"Which event occurs when a user clicks on an HTML element?",
+                A: "onmouseover",
+                B: "onclick",
+                C: "onchange",
+                D: "onload",
+                answer:"B:onclick"  
+            }
+        ]
+        let i = 0;
+        let n = questions.length
+        let container = document.getElementById("container")
+        let butn = document.getElementById("btn")
+        butn.addEventListener("click",e =>{
+            e.preventDefault()
+            display()
+            Next()
+            Submit()
+            Restart()
+        })
+        function display(){
+            container.innerHTML = ""
+            container.innerHTML = `<div>${questions[i].question}</div>
+            <div>${questions[i].A}</div>
+            <div>${questions[i].B}</div>
+            <div>${questions[i].C}</div>
+            <div>${questions[i].D}</div>`
+
+            i++
+        }
+
+        function Next(){
+            if(i<n-1){
+                btn.innerHTML="Next"
+            }
+        }
+
+        function Submit(){
+            if(i==n-1){
+                btn.innerHTML="Submit"
+            }
+        }
+
+        function Restart(){
+            if(i==n){
+                container.innerHTML="Quiz restart.."
+                btn.innerHTML="Restart"
+                i=0
+            }
+        }
+
+    </script>
+</body>
+</html>
